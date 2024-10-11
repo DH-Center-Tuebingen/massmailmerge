@@ -28,6 +28,7 @@ args = parser.parse_args()
 sandbox = input("Sandbox run? (Y/n) ")
 sandbox = sandbox.lower().strip() in ["", "y"]
 smtpsrv = None
+mime = None
 
 try:
     send_count = 0
@@ -117,7 +118,7 @@ try:
     
     print(f"\n{send_count} message(s) sent.")
 except Exception as e:
-    print("ERROR!", e, mime)
+    print("ERROR!", e, "" if mime is None else mime)
     traceback.print_exc()
 finally:
     if smtpsrv: 
